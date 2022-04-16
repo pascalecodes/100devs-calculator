@@ -1,0 +1,115 @@
+/******************************************
+/* CSS
+/*******************************************/
+
+/* Box Model Hack */
+/* *{
+  box-sizing: border-box;
+} */
+
+/* Clear fix hack */
+/* .clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+} */
+
+/* .clear {
+clear: both;
+} */
+
+html{
+    font-size: 62.5%;
+    box-sizing: border-box;
+  }
+  *, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+  }
+  body{
+    background: linear-gradient(to right, rgb(0, 140, 255), rgb(6, 243, 18));
+  }
+  
+  /******************************************
+  /* LAYOUT
+  /*******************************************/
+  h1{
+    text-align: center;
+    color: white;
+    padding: 0;
+  }
+  .calculator{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 40px;
+    padding-top: 75px;
+    background-color: black;
+    border-radius: 25px;
+  }
+  .calcScreen{
+    width: 100%;
+    font-size: 5rem;
+    height: 80px;
+    border: none;
+    background-color: white;
+    color: black;
+    text-align: right;
+    padding-right: 10px;
+  }
+  
+  .calcClickPad{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 15px;
+    padding-bottom: 5px;
+  }
+  
+  button{
+    height: 60px;
+    background-color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 4rem;
+    font-weight: bold;
+    color: black;
+    margin: 7px;
+    padding: 5px;
+    flex: 1 0 18%;
+  }
+  
+  .allClear{
+    background-color: red;
+    color: white;
+    font-size: 2rem;
+  }
+  .power{
+    background-color: green;
+    color: white;
+    font-size: 1.5rem;
+  }
+  .sign{
+    font-size: 3rem;
+  }
+  .percent{
+    font-size: 3rem;
+  }
+  .delete{
+    background-color: orange;
+    color: white;
+    font-size: 2rem;
+  }
+  
+  button:hover{
+    background-color: rgb(153, 152, 152);
+  }
+  /******************************************
+  /* ADDITIONAL STYLES
+  /*******************************************/
