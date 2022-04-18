@@ -25,9 +25,6 @@ const calculator = {
     prevTotal: null,
 
     parseInput(value){
-        if(this.displayText === '0'){
-            this.displayText = ''
-        }
         //have any of the special functions been clicked
         switch(value){
             case '=': 
@@ -50,8 +47,22 @@ const calculator = {
             default:
                 //add value to text string
         }
-        addText(value){
 
-        }
-    }
+        },
+       
+        addText(value){
+            if(this.displayText === '0'){
+                this.displayText = ''
+            }else if(this.prevTotal !== null){
+                this.displayText = trhis.prevTotal
+                this.prevTotla = null
+            }
+            if(/*user entered invalid sequence dont process*, check if last character in display isn't a number and value being entered is not a number and it's an arithmetic function replace with arthmitic operation with the new click/){
+
+            }
+            this.displayText += value
+            //output display text to screen
+
+        },
+    
 }
