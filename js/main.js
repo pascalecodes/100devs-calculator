@@ -16,7 +16,7 @@ const keys= document.querySelector('.calcClickPad');
             return;
         }else{
             calculator.parseInput(value)
-            //console.log(value)
+            console.log(value)
         }
     })
 
@@ -29,23 +29,31 @@ const calculator = {
         switch(value){
             case '=': 
                 //calculate the answer
+                this.calcAnswer(this.displayText)
                 break;
             case 'AC':
                 //clear the screen and sotred values
+                this.clearAll()
                 break;
             case 'DEL':
                 //delete the last click
+                this.deletePrev()
             case '+/-':
                 //change to positive or negative
+            case 'on/off':
+                //turn off or on calculator
             case '.': 
                 if(this.displayText == 0){
                     //pass '0.' into add text method
+                    this.addText('0')
                 }else {
                     //add value to text string
+                    this.addText(value)
                 }
                 break;
             default:
                 //add value to text string
+                this.addText(value)
         }
 
         },
@@ -54,15 +62,48 @@ const calculator = {
             if(this.displayText === '0'){
                 this.displayText = ''
             }else if(this.prevTotal !== null){
-                this.displayText = trhis.prevTotal
-                this.prevTotla = null
+                this.displayText = this.prevTotal
+                this.prevTotal = null
             }
-            if(/*user entered invalid sequence dont process*, check if last character in display isn't a number and value being entered is not a number and it's an arithmetic function replace with arthmitic operation with the new click/){
+            //--> change this check to put an if statement to check if the input is a number or an operator that was place in there
+            if(isNaN(+(value)) && isNaN(+(this.displayText))){
+                if(isNaN(this.displayText.slice(-1))){
+                    return;
+                }
 
             }
             this.displayText += value
             //output display text to screen
+            this.outputText(this.displayText)
+
 
         },
+
+        //method that will display text on screen
+        outputText(text){
+            //we are passing into an text element and not an html element so we don't use innerHTML
+            document.querySelector('.calcScreen').value = text
+        },
+
+        //method to do some calculations from the equation that is typed
+        calcAnswer(equation){
+            //pass in displayText and evalute the expression that is passed in after they called the method
+            let result = Function('return ' + equation)()
+            //if the displayText is not zero and you are doing a calculation then put the answer in displaytext
+            this.outputText(result)
+        },
+
+        //method to clear the screen and values
+        clearAll(){
+            this.displayText = '0',
+            this.prevTotal = null,
+            this.outputText(this.displayText)
+        },
+
+        //-->>> still need to fix this method to delete the previous last inputed string or character
+        deletePrev(){
+            this.displayText = '0',
+            this.outputText(this.displayText)
+        }
     
 }
