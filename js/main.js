@@ -93,7 +93,7 @@ const calculator = {
             if(this.displayText === '0'){               //if ON turn OFF
                 this.displayText = null
                 this.outputText(this.displayText)
-                //disable the clickpad
+                //disable the clickpad when the off button is true
                 
 
             }else{                                      //else turn ON
