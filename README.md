@@ -5,6 +5,7 @@
 ### What it should look like:
 
 ![Calculator](calculator.jpg)
+### Changes to the image is acceptable
 
 ### How to submit your code for review:
 
