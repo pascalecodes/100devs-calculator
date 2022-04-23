@@ -6,7 +6,8 @@
 //Return: calculate and return answer to display
 //examples: 2+3 = 5, 23+2 /5= 25, -2*10= -20
 //Pseudo code:
-//for on off button everything is off if clicked off, then turn on when pushed on
+//for on off button everything is off if clicked off, then turn on when pushed on, default it to start on, click to off
+
 
 const keys= document.querySelector('.calcClickPad');
     keys.addEventListener('click', event => {
@@ -19,6 +20,7 @@ const keys= document.querySelector('.calcClickPad');
             console.log(value)
         }
     })
+let displayText = '0';
 
 const calculator = {
     displayText: '0',
@@ -26,6 +28,7 @@ const calculator = {
 
     parseInput(value){
         //have any of the special functions been clicked
+        //try add displayte
         switch(value){
             case '=': 
                 //calculate the answer
@@ -42,6 +45,8 @@ const calculator = {
                 //change to positive or negative
             case 'on/off':
                 //turn off or on calculator
+                this.turnOnOff()
+                break;
             case '.': 
                 if(this.displayText == 0){
                     //pass '0.' into add text method
@@ -75,14 +80,26 @@ const calculator = {
             this.displayText += value
             //output display text to screen
             this.outputText(this.displayText)
-
-
         },
 
         //method that will display text on screen
         outputText(text){
             //we are passing into an text element and not an html element so we don't use innerHTML
             document.querySelector('.calcScreen').value = text
+        },
+        //method to toggle screen on or off
+        turnOnOff(){
+            //add logic to turn display off
+            if(this.displayText === '0'){               //if ON turn OFF
+                this.displayText = null
+                this.outputText(this.displayText)
+                //disable the clickpad
+                
+
+            }else{                                      //else turn ON
+                this.displayText = '0'              
+                this.outputText(this.displayText)
+            }
         },
 
         //method to do some calculations from the equation that is typed
