@@ -42,7 +42,7 @@ const calculator = {
                 //delete the last click
                 this.deletePrev()
             case '+/-':
-                //change to positive or negative
+                //change to positive or negative number
             case 'on/off':
                 //turn off or on calculator
                 this.turnOnOff()
